@@ -1,40 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<!-- 1. Load the Content Experiments JavaScript Client -->
-<script src="//www.google-analytics.com/cx/api.js?experiment=vikt5wb1QlWhHcxnCjdi_Q"></script>
+  <title>ABalytics simple test</title>
 
-<script>
-  var image_variations = [
-      'p1.png',
-      'p12.png'
-     
-  ]
+  <script type="text/javascript" src="../abalytics.js"> </script>
 
-  // 2. Choose the Variation for the User
-  var variation = cxApi.chooseVariation();
+  <script type="text/javascript">
+    // Classic Analytics Tracking Code Example
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-74926903-1'],
+              ['_setDomainName', 'none']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
-  window.onload = function(){
-    // 3. Evaluate the result and update the image
-    exp_image = document.getElementById('hero_image');
-    exp_image.src = image_variations[variation];
-  }
-</script>
+  <script type="text/javascript">
+    // Universal Analytics Tracking Code Example
+    // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    // ga('create', 'UA-XXXXXXXX-X', {
+    //   'cookieDomain': 'none'
+    // });
+  </script>
 
-<!-- 4. Load analytics.js and send a hit to Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-74926903-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
+  <script type="text/javascript">
+    // ABalytics example
+    ABalytics.init({
+        click_button_intro: [
+            {
+                name: 'ab_compel',
+                "ab_test1": "This text will compel you to click the button below!"
+            },
+            {
+                name: 'ab_convince',
+                "ab_test1": "This text will convince you to click the button below!"
+            }
+        ]},5);
+    // ga('send', 'pageview');
+    _gaq.push(['_trackPageview']);
+  </script>
 </head>
-<body>
-  <h1>Welcome</h1>
-  <img id="hero_image"/>
-  <p>Welcome to my experiment!</p>
+<body >
+  <center><h1>This is a very interesting A/B test</h1></center>
+
+  <p class="ab_test1">
+    The user will never see this
+  </p>
+
+    <p style="color: blue;">
+        A very good system
+    </p>
+
+  <button onclick="_gaq.push(['_trackEvent', 'goal', 'click']);">Goal button</button>
+  <!-- <button onclick="ga('send','event','goal','click');">Goal button</button> -->
+  <script type="text/javascript">
+  window.onload = function() {
+    ABalytics.applyHtml();
+  };
+</script>
+  <script type="text/javascript">
+    window.onload = function() {
+      ABalytics.applyHtml();
+    };
+  </script>
 </body>
 </html>
