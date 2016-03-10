@@ -1,0 +1,4 @@
+cron:
+- description: refresh experiments info
+  url: /refresh_experiments
+  schedule: every 12 hours
