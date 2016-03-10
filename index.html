@@ -1,6 +1,5 @@
 <html>
 <head>
-<!-- 1. Load the Content Experiments JavaScript Client -->
 <script src="//www.google-analytics.com/cx/api.js?experiment=vikt5wb1QlWhHcxnCjdi_Q"></script>
 
 <script>
@@ -10,17 +9,14 @@
      
   ]
 
-  // 2. Choose the Variation for the User
   var variation = cxApi.chooseVariation();
 
   window.onload = function(){
-    // 3. Evaluate the result and update the image
     exp_image = document.getElementById('hero_image');
     exp_image.src = image_variations[variation];
   }
 </script>
 
-<!-- 4. Load analytics.js and send a hit to Google Analytics -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
